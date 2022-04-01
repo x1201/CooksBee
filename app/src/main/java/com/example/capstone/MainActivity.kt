@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.startbtn.setOnClickListener {
-            val intent = Intent(this, RecipePage::class.java)
-            intent.putExtra("code", code)
+            val intent = Intent(this, UtubeSearchActivity::class.java)
+           // intent.putExtra("code", code)
             startActivity(intent)
         }
 

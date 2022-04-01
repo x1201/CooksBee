@@ -3,6 +3,11 @@
     package="com.example.capstone">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -27,6 +32,12 @@
             android:name=".SearchActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".UtubePlay"
+            android:exported="true" />
+        <activity
+            android:name=".UtubeSearchActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
