@@ -1,5 +1,5 @@
 package com.example.capstone
-
+// 나한테만 적용인가?
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
