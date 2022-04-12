@@ -46,7 +46,6 @@ class SearchActivity : AppCompatActivity(){
             binding.SearchPageRecyclerView.setHasFixedSize(true)
             binding.SearchPageRecyclerView.adapter = SearchAdapter(adapterCatchLists)
         })
-
         db.collection("recipe")
             .get()
             .addOnSuccessListener{result->

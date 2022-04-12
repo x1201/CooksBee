@@ -87,9 +87,8 @@ class SearchAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapter<
                 }
             }
         }
-        Log.d(ContentValues.TAG,"findList = $findLists")
-        //이제 findLists를 searchPageActivity랑 searchActivity에서 받아야함
     }
+
     fun returnRecipe(): ArrayList<NameInfo>{
         return findLists
     }
