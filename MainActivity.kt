@@ -32,12 +32,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.MainSearchButton.setOnClickListener(View.OnClickListener {
             var searchText = binding.MainSearchText.text.toString()
-
+            //searchAdapter에게 searchText를 보내는 과정
             if(searchText.equals("")) Log.d(TAG,"null")
             else{
                 val mAdapter : RecyclerView.Adapter<*> = SearchAdapter(DBLists!!)//searchAdapter의 searchList에 데이터베이스의 모든 레시피를 보내 filter에서 검색을 돌리도록하는것
                 (mAdapter as SearchAdapter).filter(searchText) //searchText는 searchAdapter의 filter의 searchText가되어 검색어가된다.
-                adapterCatchLists = (mAdapter).returnRecipe()
+                adapterCatchLists = (mAdapter).returnRecipe() //검색해서 나온 레시피를 받아오는 코드
                 nextIntent.putExtra("sendList", adapterCatchLists)
                 startActivity(nextIntent)
             }
