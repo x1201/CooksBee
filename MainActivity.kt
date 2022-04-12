@@ -1,5 +1,4 @@
 package com.example.capstone
-// 나한테만 적용인가?
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -48,8 +47,7 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener{result->
                 DBLists = ArrayList()
                 for(document in result){
-                    DBLists!!.add(NameInfo(document.id, document.data["name"].toString(), document.data["ingredient"].toString(), document.data["picture"].toString())
-                    )
+                    DBLists!!.add(NameInfo(document.id, document.data["name"].toString(), document.data["ingredient"].toString(), document.data["picture"].toString()))
                 }
             }
     }
