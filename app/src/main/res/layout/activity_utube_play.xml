@@ -11,7 +11,7 @@
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/playerView"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="220dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />

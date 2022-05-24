@@ -27,6 +27,7 @@ class SearchActivity : AppCompatActivity(){
         setContentView(binding.root)
         catchLists = intent.getSerializableExtra("sendList") as ArrayList<NameInfo> //<- getList에 getSerializableExtra로 searchsList의 리스트내용을 전부 받음
         //타입 일치위해 getSerializableExtra 뒤에 ad ArrayList<NameInfo>를 붙임
+
         binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.SearchPageRecyclerView.setHasFixedSize(true)
         binding.SearchPageRecyclerView.adapter = SearchAdapter(catchLists)
@@ -35,16 +36,15 @@ class SearchActivity : AppCompatActivity(){
             var searchText = binding.SearchText.text.toString()
             if(searchText.equals("")) {
                 Log.d(TAG,"null")
-                adapterCatchLists.clear()
             }
             else{
                 val mAdapter : RecyclerView.Adapter<*> = SearchAdapter(DBLists!!) //searchAdapter의 searchList에 데이터베이스의 모든 레시피를 보내 filter에서 검색을 돌리도록하는것
                 (mAdapter as SearchAdapter).filter(searchText) //searchText는 searchAdapter의 filter의 searchText가되어 검색어가된다.
                 adapterCatchLists = (mAdapter).returnRecipe()
+                binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                binding.SearchPageRecyclerView.setHasFixedSize(true)
+                binding.SearchPageRecyclerView.adapter = SearchAdapter(adapterCatchLists)
             }
-            binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-            binding.SearchPageRecyclerView.setHasFixedSize(true)
-            binding.SearchPageRecyclerView.adapter = SearchAdapter(adapterCatchLists)
         })
         db.collection("recipe")
             .get()
@@ -56,7 +56,8 @@ class SearchActivity : AppCompatActivity(){
                             document.id,
                             document.data["name"].toString(),
                             document.data["ingredient"].toString(),
-                            document.data["picture"].toString()
+                            document.data["picture"].toString(),
+                            document.data["tag"].toString()
                         )
                     )
                 }

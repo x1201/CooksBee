@@ -38,6 +38,9 @@
         <activity
             android:name=".UtubeSearchActivity"
             android:exported="true" />
+        <activity
+            android:name=".CategoriActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

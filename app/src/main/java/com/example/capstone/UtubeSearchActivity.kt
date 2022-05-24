@@ -31,6 +31,7 @@ class UtubeSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         search = findViewById<View>(R.id.search) as EditText
+
         binding.button.setOnClickListener { //제목을 입력하면 제목을 키워드로 하여 비동기 식으로 영상에 대한 정보를 가지고 온다.
            search()
         }
@@ -47,13 +48,12 @@ class UtubeSearchActivity : AppCompatActivity() {
 
     private fun search (){
             CoroutineScope(Dispatchers.Main).launch{
-                val result = async(Dispatchers.Default) {
-                    paringJsonData(utube)
-                }.await()
+                //검색 결과 불러오는 코드
+                val result = async(Dispatchers.Default) { paringJsonData(utube) }.await()
+                //
                 binding.recyclerview.layoutManager = LinearLayoutManager(this@UtubeSearchActivity, LinearLayoutManager.VERTICAL, false)
                 binding.recyclerview.setHasFixedSize(true)
                 binding.recyclerview.adapter = UtubeAdapter(this@UtubeSearchActivity, sdata)
-
             }
         }
 

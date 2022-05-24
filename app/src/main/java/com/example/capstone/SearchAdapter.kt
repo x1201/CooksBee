@@ -1,6 +1,7 @@
 package com.example.capstone
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -45,6 +46,7 @@ class SearchAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapter<
     fun filter(searchText: String) {
         val SearchText = searchText
         var searchKeywordList: List<String>
+
         findLists = ArrayList()
         beforeKeywordSearchList = ArrayList()
         afterKeywordSearchList = ArrayList()
@@ -53,8 +55,11 @@ class SearchAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapter<
             searchKeywordList = SearchText.split('#')
             if(searchKeywordList.size - 1 == 1){
                 for(i in 0 until searchList.size){
-                    if(searchList[i].ingredient.contains(searchKeywordList[1])){
-                        findLists.add(NameInfo(searchList[i].id,searchList[i].name,searchList[i].ingredient,searchList[i].url))
+                    if(searchKeywordList[1] == "") Log.d(TAG,"not use only #")
+                    // #@했을때 모든 레시피가 나오는것 해결해야함
+                    else if(searchList[i].ingredient.contains(searchKeywordList[1])){
+                        if(searchKeywordList[1].contains('@')) Log.d(TAG,"not @")
+                        else findLists.add(NameInfo(searchList[i].id,searchList[i].name,searchList[i].ingredient,searchList[i].url,searchList[i].tag))
                     }else Log.d(ContentValues.TAG,"searchList[1] notFound")
                 }
             }
@@ -65,7 +70,7 @@ class SearchAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapter<
                 for(j in 1 .. searchKeywordList.size - 1){
                     for(i in 0 until beforeKeywordSearchList.size){
                         if(beforeKeywordSearchList[i].ingredient.contains(searchKeywordList[j].replace(" ",""))){
-                            afterKeywordSearchList.add(NameInfo(beforeKeywordSearchList[i].id,beforeKeywordSearchList[i].name,beforeKeywordSearchList[i].ingredient,beforeKeywordSearchList[i].url))
+                            afterKeywordSearchList.add(NameInfo(beforeKeywordSearchList[i].id,beforeKeywordSearchList[i].name,beforeKeywordSearchList[i].ingredient,beforeKeywordSearchList[i].url,searchList[i].tag))
                         }
                         else Log.d(ContentValues.TAG,"searchKeywordList'S notFound")
                     }
@@ -79,7 +84,7 @@ class SearchAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapter<
         else{
             for(i in 0 until searchList.size){
                 if(searchList[i].name.contains(SearchText)){
-                    findLists.add(NameInfo(searchList[i].id,searchList[i].name,searchList[i].ingredient,searchList[i].url))
+                    findLists.add(NameInfo(searchList[i].id,searchList[i].name,searchList[i].ingredient,searchList[i].url,searchList[i].tag))
                 }
             }
         }
