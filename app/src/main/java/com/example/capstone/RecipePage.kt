@@ -89,7 +89,6 @@ class RecipePage : AppCompatActivity() {
                     recipesList.add(Recipes(recipeURLList[i], recipeTextList[i]))
                 }
                 muteNoti()
-                requestPermission()
                 setListener()
                 makeTTS()
                 show()
@@ -121,25 +120,12 @@ class RecipePage : AppCompatActivity() {
         var intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
             putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, packageName)
             putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR")
-            putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS,100)
-            putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 100)
-            putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,500)
-
+            putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
         }
 
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this).apply {
             setRecognitionListener(recognitionListener)
             startListening(intent)
-        }
-
-    }
-
-    private fun requestPermission(){//권한 허가 요청
-        if(Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this,
-                arrayOf(Manifest.permission.RECORD_AUDIO), 0)
         }
     }
 
@@ -225,7 +211,16 @@ class RecipePage : AppCompatActivity() {
             }
 
             override fun onPartialResults(partiaResults: Bundle?) {//부분 인식 결과를 사용할 수 있을때 호출됨
-
+                var matches: ArrayList<String>? = partiaResults?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                if (matches != null){
+                    for (i in 0 until matches.size) {
+                        speechText = matches[i]
+                        //println("STT-TEST: PART " + speechText)
+                    }
+                    if(speechText.contains("멈춰")){
+                        stopTTS()
+                    }
+                }
             }
 
             override fun onEvent(eventType: Int, params: Bundle?) {//향후 이벤트를 추가하기 위해 예약됨

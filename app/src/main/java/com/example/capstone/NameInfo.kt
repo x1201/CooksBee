@@ -2,7 +2,7 @@ package com.example.capstone
 
 import java.io.Serializable
 
-data class NameInfo(var id : String? = null, var name : String,val ingredient : String , val url : String) : Serializable
+data class NameInfo(var id : String? = null, var name : String, val ingredient : String , val url : String, val tag : String) : Serializable
 //uid =해당 레시피의 고유 코드
 /*Serializable(직렬화)
 자바 시스템 내부에서 사용하는 객체를 외부의 자바 시스템에서도 사용할 수 있도록 byte형태로 데이터를 전환 시키는 기술
