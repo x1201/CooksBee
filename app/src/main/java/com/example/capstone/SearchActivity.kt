@@ -41,24 +41,6 @@ class SearchActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        //
-        //utubesearchText = findViewById<View>(R.id.SearchText) as EditText
-        //
-
-        /*
-        catchUtubeText = intent.getStringExtra("sendUtubeText")
-        name = catchUtubeText
-        Log.d(TAG,"catcjUtubeText = ${catchUtubeText}")
-        //search()
-        */
-
-        /*
-        catchLists = intent.getSerializableExtra("sendList") as ArrayList<NameInfo> //<- getList에 getSerializableExtra로 searchsList의 리스트내용을 전부 받음
-        // 타입 일치위해 getSerializableExtra 뒤에 ad ArrayList<NameInfo>를 붙임
-        binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.SearchPageRecyclerView.setHasFixedSize(true)
-        binding.SearchPageRecyclerView.adapter = SearchAdapter(catchLists)
-        */
 
         binding.SearchButton.setOnClickListener(View.OnClickListener {
             var searchText = binding.SearchText.text.toString()
@@ -95,14 +77,6 @@ class SearchActivity : AppCompatActivity(){
 
         binding.RecipePageButton.setOnClickListener({
             if(utubeText == null){
-                /*
-                val mAdapter : RecyclerView.Adapter<*> = SearchAdapter(DBLists!!)
-                (mAdapter as SearchAdapter).filter(name!!)
-                adapterCatchLists = (mAdapter).returnRecipe()
-                binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-                binding.SearchPageRecyclerView.setHasFixedSize(true)
-                binding.SearchPageRecyclerView.adapter = SearchAdapter(adapterCatchLists)
-                */
                 Log.d(TAG,"name은 null값입니다!")
             }
             else {
@@ -114,12 +88,6 @@ class SearchActivity : AppCompatActivity(){
 
         binding.UtubePageButton.setOnClickListener({
             if(utubeText == null){
-                /*
-                name = catchUtubeText
-                binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-                binding.SearchPageRecyclerView.setHasFixedSize(true)
-                binding.SearchPageRecyclerView.adapter = UtubeAdapter(this, utubeData
-                */
                 Log.d(TAG,"name은 null값입니다!")
             }
             else {
@@ -154,9 +122,6 @@ class SearchActivity : AppCompatActivity(){
             val result = async(Dispatchers.Default) { paringJsonData(utube) }.await()
             //
 
-            //binding.recyclerview.layoutManager = LinearLayoutManager(this@UtubeSearchActivity, LinearLayoutManager.VERTICAL, false)
-            //binding.recyclerview.setHasFixedSize(true)
-            //binding.recyclerview.adapter = UtubeAdapter(this@UtubeSearchActivity, sdata)
         }
     }
 

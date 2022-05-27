@@ -62,26 +62,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(nextIntent)
         })
 
-        /*
-        binding.MainSearchButton.setOnClickListener(View.OnClickListener {
-            var nextIntent = Intent(this, SearchActivity::class.java)
-            var searchText = binding.MainSearchText.text.toString()
-            utubeText = searchText
-
-            if(searchText.equals("")) Log.d(TAG,"null")
-            else{
-
-                val mAdapter : RecyclerView.Adapter<*> = SearchAdapter(DBLists!!)//searchAdapter의 searchList에 데이터베이스의 모든 레시피를 보내 filter에서 검색을 돌리도록하는것
-                (mAdapter as SearchAdapter).filter(searchText) //searchText는 searchAdapter의 filter의 searchText가되어 검색어가된다.
-                adapterCatchLists = (mAdapter).returnRecipe()  //adapterCatchList로 searchAdapter에서 나온 결과리스트를 받아옴
-                nextIntent.putExtra("sendList", adapterCatchLists)
-                //
-                nextIntent.putExtra("sendUtubeText", utubeText)
-                //
-                startActivity(nextIntent)
-            }
-        })
-        */
 
         val intent = Intent(this,CategoriActivity::class.java)
 
