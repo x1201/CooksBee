@@ -17,12 +17,12 @@ class CategoriAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapte
     lateinit var findLists: ArrayList<NameInfo>
 
     class CustomViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val searchPhoto = itemView.findViewById<ImageView>(R.id.searchRecipeImage)
-        val searchName = itemView.findViewById<TextView>(R.id.searchRecipeName)
+        val searchPhoto = itemView.findViewById<ImageView>(R.id.titleImage)
+        val searchName = itemView.findViewById<TextView>(R.id.titleText)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_utube, parent, false)
         return CustomViewHolder(view)
     }
 

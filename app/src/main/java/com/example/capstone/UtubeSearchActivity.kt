@@ -1,9 +1,11 @@
 package com.example.capstone
 
+import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,6 +41,7 @@ class UtubeSearchActivity : AppCompatActivity() {
         binding.recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.recyclerview.setHasFixedSize(true)
         binding.recyclerview.adapter = UtubeAdapter(this, sdata)
+        Log.d(TAG,"sdata = ${sdata}")
     }
 
     val job = CoroutineScope(Dispatchers.Default).launch {

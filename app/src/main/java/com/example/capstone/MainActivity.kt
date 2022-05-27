@@ -15,8 +15,22 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone.databinding.ActivityMainBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
+    //
+    var utubeText: String? = null
+    //
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private var code : String ="ixpayhTvaQr46BKBbLFk"
 
@@ -42,20 +56,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        binding.MainSearchButton.setOnClickListener(View.OnClickListener {
+        // 이쪽코드가 ****검색창**** 이미지뷰 코드입니다. MainSearchText를 이미지뷰id값을 넣으시면 작동됩니다.
+        binding.MainSearchText.setOnClickListener({
             var nextIntent = Intent(this, SearchActivity::class.java)
-            var searchText = binding.MainSearchText.text.toString()
-
-            if(searchText.equals("")) Log.d(TAG,"null")
-            else{
-                val mAdapter : RecyclerView.Adapter<*> = SearchAdapter(DBLists!!)//searchAdapter의 searchList에 데이터베이스의 모든 레시피를 보내 filter에서 검색을 돌리도록하는것
-                (mAdapter as SearchAdapter).filter(searchText) //searchText는 searchAdapter의 filter의 searchText가되어 검색어가된다.
-                adapterCatchLists = (mAdapter).returnRecipe()  //adapterCatchList로 searchAdapter에서 나온 결과리스트를 받아옴
-                nextIntent.putExtra("sendList", adapterCatchLists)
-                startActivity(nextIntent)
-            }
+            startActivity(nextIntent)
         })
+
+
         val intent = Intent(this,CategoriActivity::class.java)
 
         binding.koreaFood.setOnClickListener{
@@ -87,7 +94,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         db.collection("recipe")
             .get()
             .addOnSuccessListener{result->
@@ -102,4 +108,5 @@ class MainActivity : AppCompatActivity() {
         val audioManager: AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 5,0)//음성인식때문에 음소거되어있던 알림소리 정상화
     }
+
 }

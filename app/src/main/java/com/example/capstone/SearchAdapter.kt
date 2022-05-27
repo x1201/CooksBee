@@ -21,12 +21,12 @@ class SearchAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapter<
     lateinit var afterKeywordSearchList : ArrayList<NameInfo> // 임시 검색결과를 담을 리스트 선언
 
     inner class CustomViewHoder(ItemView : View) : RecyclerView.ViewHolder(ItemView) {
-        val searchPhoto = itemView.findViewById<ImageView>(R.id.searchRecipeImage)
-        val searchName = itemView.findViewById<TextView>(R.id.searchRecipeName)
+        val searchPhoto = itemView.findViewById<ImageView>(R.id.titleImage)
+        val searchName = itemView.findViewById<TextView>(R.id.titleText)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : SearchAdapter.CustomViewHoder{
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_item, parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_utube, parent,false)
         return CustomViewHoder(view)
     }
     override fun getItemCount(): Int {
