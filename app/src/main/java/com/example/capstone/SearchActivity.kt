@@ -30,6 +30,7 @@ class SearchActivity : AppCompatActivity(){
     var utubeText: String? = null
     var utubeData = ArrayList<SearchData>()
     val serverKey = "AIzaSyA3wjLVxkqdyd-dYtF-_2IRZGYrCd0jKN4"
+    var selectedIngredient : String = ""
     //
     var db = FirebaseFirestore.getInstance()
     lateinit var catchLists: ArrayList<NameInfo> // <- SearchPageActivity에서 searchsList를 받아올 ArrayList + 타입 일치를 위해 lateinit사용 ? = null 사용하면 타입안맞아서 오류발생
@@ -41,6 +42,9 @@ class SearchActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        selectedIngredient = intent?.getStringExtra("select_ingredient")?: ""
+        binding.SearchText.setText(selectedIngredient)
 
         binding.SearchButton.setOnClickListener(View.OnClickListener {
             var searchText = binding.SearchText.text.toString()

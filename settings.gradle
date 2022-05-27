@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Capstone"
 include ':app'
+include ':lib_task_api'
+include ':lib_interpreter'

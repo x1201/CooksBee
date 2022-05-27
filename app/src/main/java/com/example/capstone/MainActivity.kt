@@ -21,6 +21,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
+import org.tensorflow.lite.examples.detection.DetectorActivity
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -102,6 +103,12 @@ class MainActivity : AppCompatActivity() {
                     DBLists!!.add(NameInfo(document.id, document.data["name"].toString(), document.data["ingredient"].toString(), document.data["picture"].toString(),document.data["tag"].toString()))
                 }
             }
+
+        binding.cameraSearch.setOnClickListener{
+            val intent = Intent(this,DetectorActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     override fun onDestroy() {
         super.onDestroy()

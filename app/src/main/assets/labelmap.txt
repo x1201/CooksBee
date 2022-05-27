@@ -1,0 +1,38 @@
+abalone
+anchovy
+apple
+bacon
+banana
+beef
+carrot
+laver
+chili
+mackerel
+cucumber
+daikon
+egg
+enokiMushroom
+garlic
+grape
+greenOnion
+kiwi
+octupus
+pork
+potato
+pumpkin
+quail eggs
+red pepper paste
+salmon
+sausage
+sesame leaf
+shrimp
+soybean paste
+soysauce
+spinach
+strawberry
+sweet potato
+paprika
+onion
+peach
+tomato
+pear

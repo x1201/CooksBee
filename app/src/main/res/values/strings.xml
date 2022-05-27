@@ -1,3 +1,87 @@
 <resources>
     <string name="app_name">쿡스비</string>
+    <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+
+    <string-array name="eng_name">
+        <item>abalone</item>
+        <item>anchovy</item>
+        <item>apple</item>
+        <item>bacon</item>
+        <item>banana</item>
+        <item>beef</item>
+        <item>carrot</item>
+        <item>laver</item>
+        <item>chili</item>
+        <item>mackerel</item>
+        <item>cucumber</item>
+        <item>daikon</item>
+        <item>egg</item>
+        <item>enokiMushroom</item>
+        <item>garlic</item>
+        <item>grape</item>
+        <item>greenOnion</item>
+        <item>kiwi</item>
+        <item>octupus</item>
+        <item>pork</item>
+        <item>potato</item>
+        <item>pumpkin</item>
+        <item>quail eggs</item>
+        <item>red pepper paste</item>
+        <item>salmon</item>
+        <item>sausage</item>
+        <item>sesame leaf</item>
+        <item>shrimp</item>
+        <item>soybean paste</item>
+        <item>soysauce</item>
+        <item>spinach</item>
+        <item>strawberry</item>
+        <item>sweet potato</item>
+        <item>paprika</item>
+        <item>onion</item>
+        <item>peach</item>
+        <item>tomato</item>
+        <item>pear</item>
+    </string-array>
+
+    <string-array name="kor_name">
+        <item>전복</item>
+        <item>멸치</item>
+        <item>사과</item>
+        <item>베이컨</item>
+        <item>바나나</item>
+        <item>소고기</item>
+        <item>당근</item>
+        <item>김</item>
+        <item>고추</item>
+        <item>고등어</item>
+        <item>오이</item>
+        <item>무</item>
+        <item>계란</item>
+        <item>팽이버섯</item>
+        <item>마늘</item>
+        <item>포도</item>
+        <item>대파</item>
+        <item>키위</item>
+        <item>문어</item>
+        <item>돼지고기</item>
+        <item>감자</item>
+        <item>호박</item>
+        <item>메추리알</item>
+        <item>고추장</item>
+        <item>연어</item>
+        <item>소세지</item>
+        <item>깻잎</item>
+        <item>새우</item>
+        <item>된장</item>
+        <item>간장</item>
+        <item>시금치</item>
+        <item>딸기</item>
+        <item>고구마</item>
+        <item>파프리카</item>
+        <item>양파</item>
+        <item>복숭아</item>
+        <item>토마토</item>
+        <item>배</item>
+    </string-array>
+
 </resources>
