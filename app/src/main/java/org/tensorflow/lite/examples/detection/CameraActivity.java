@@ -206,7 +206,7 @@ public abstract class CameraActivity extends AppCompatActivity
         if(checkedArray.size()!=0){
           for(int i=0;i<count;i++){
             if(checkedArray.get(i)){
-              selected_list = "#" + ingredients.get(i);
+              selected_list = selected_list +"#" + ingredients.get(i);
             }
           }
           Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
