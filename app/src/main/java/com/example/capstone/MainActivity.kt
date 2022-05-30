@@ -12,9 +12,9 @@ import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstone.databinding.ActivityMainBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
 
     var db = FirebaseFirestore.getInstance()
     var DBLists: ArrayList<NameInfo>? = null // id, name, 재료를 넣은 리스트
+    var logdb : LogDatabase? = null
+    var recipeLogList = ArrayList<NameInfo>()
     lateinit var adapterCatchLists : ArrayList<NameInfo> //searchAdapter에서 리스트 받아오는 리스트
     lateinit var kategoriCatchLists : ArrayList<NameInfo> //searchAdapter에서 리스트 받아오는 리스트
 
@@ -52,11 +54,11 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.RECORD_AUDIO), 0)
         }
 
-//        binding.startbtn.setOnClickListener {
-//            val intent = Intent(this, UtubeSearchActivity::class.java)
-//            //intent.putExtra("code", code)
-//            startActivity(intent)
-//        }
+        binding.startbtn.setOnClickListener {
+            val intent = Intent(this, UtubeSearchActivity::class.java)
+            //intent.putExtra("code", code)
+            startActivity(intent)
+        }
 
         // 이쪽코드가 ****검색창**** 이미지뷰 코드입니다. MainSearchText를 이미지뷰id값을 넣으시면 작동됩니다.
         binding.MainSearchText.setOnClickListener({
@@ -96,6 +98,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.favorites.setOnClickListener {
+            val intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
+        }
+
         db.collection("recipe")
             .get()
             .addOnSuccessListener{result->
@@ -109,6 +116,36 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,DetectorActivity::class.java)
             startActivity(intent)
         }
+
+        logdb = LogDatabase.getInstance(this)
+        var savedLogs = logdb!!.RecipeLogDao().getAll()
+        val logsId = ArrayList<String>()
+        for (i in savedLogs.size-1 downTo 0){
+            logsId.add(savedLogs[i].id)
+        }
+        if (logsId.isNotEmpty()){
+            for (i in 0..logsId.size-1){
+                db.collection("recipe")
+                    .document(logsId[i])
+                    .get()
+                    .addOnSuccessListener { document ->
+                        recipeLogList!!.add(
+                            NameInfo(
+                                logsId[i],
+                                document["name"] as String,
+                                document["ingredient"] as String,
+                                document["picture"] as String,
+                                document["tag"] as String
+                            )
+                        )
+                        binding.rvRecipeLog.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+                        binding.rvRecipeLog.setHasFixedSize(true)
+                        binding.rvRecipeLog.adapter = SearchAdapter(recipeLogList)
+                    }
+            }
+        }
+
+
 
     }
     override fun onDestroy() {

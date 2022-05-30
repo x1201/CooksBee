@@ -11,8 +11,13 @@ import com.bumptech.glide.Glide
 class RecipeAdapter(val recipesList: ArrayList<Recipes>) : RecyclerView.Adapter<RecipeAdapter.CustomViewHolder>() {
 
     inner class CustomViewHolder(ItemView : View) : RecyclerView.ViewHolder(ItemView){
-        val photo = itemView.findViewById<ImageView>(R.id.recipeImage)
-        val Text = itemView.findViewById<TextView>(R.id.textRecipe)
+        var photo : ImageView
+        var Text : TextView
+
+        init {
+            photo = itemView.findViewById(R.id.recipeImage)
+            Text = itemView.findViewById(R.id.textRecipe)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeAdapter.CustomViewHolder {
@@ -23,9 +28,20 @@ class RecipeAdapter(val recipesList: ArrayList<Recipes>) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         Glide.with(holder.itemView.context).load(recipesList.get(position).url).into(holder.photo)
         holder.Text.text = recipesList.get(position).recipeText
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount(): Int {
         return recipesList.size
     }
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener){
+        this.itemClickListener = onItemClickListener
+    }
+    private lateinit var itemClickListener: OnItemClickListener
 }
