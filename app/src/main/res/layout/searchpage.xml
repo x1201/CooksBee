@@ -3,57 +3,98 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFDB00">
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFDB00"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/SearchText"
-            android:layout_width="360dp"
+        <ImageButton
+            android:id="@+id/BackButton"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="레시피를 검색하세요" />
+            android:backgroundTint="#FFDB00"
+            android:scaleType="centerCrop"
+            app:srcCompat="?attr/homeAsUpIndicator" />
 
-        <Button
+        <EditText
+            android:id="@+id/SearchText"
+            android:layout_width="295dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/searchbar2"
+            android:hint="레시피를 검색하세요"
+            android:paddingLeft="10dp" />
+
+        <ImageButton
             android:id="@+id/SearchButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="검색" />
+            android:backgroundTint="#FFDB00"
+            android:scaleType="centerCrop"
+            android:text="검색"
+            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchPageRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:background="#DFDDCB"
+        android:backgroundTint="#DFDDCB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecipePageButton" />
+        app:layout_constraintTop_toBottomOf="@id/RecipePageButton">
 
-    <Button
-        android:id="@+id/RecipePageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="레시피 페이지"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/UtubePageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="유튜브 페이지"
+    <ImageView
+        android:id="@+id/searchTab"
+        android:layout_width="420dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/searchtab" />
+
+    <ImageButton
+        android:id="@+id/RecipePageButton"
+        android:layout_width="169dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#FFDB00"
+        app:layout_constraintEnd_toStartOf="@+id/UtubePageButton"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:srcCompat="@drawable/recipetab" />
+
+    <ImageButton
+        android:id="@+id/UtubePageButton"
+        android:layout_width="169dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#FFDB00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:srcCompat="@drawable/utubetab" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

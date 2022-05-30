@@ -142,12 +142,12 @@ class RecipePage : AppCompatActivity() {
         }
 
         if (contactsId.contains(code)){
-            binding.like.setBackgroundColor(Color.RED)
+            binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
         }else{
-            binding.like.setBackgroundColor(Color.BLUE)
+            binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_off)
         }
 
-        binding.like.setOnClickListener{
+        binding.favoriteButton.setOnClickListener{
             val contactsId = arrayListOf<String>()
             for (i in 0..savedContacts.size-1){
                 contactsId.add(savedContacts[i].id)
@@ -155,7 +155,7 @@ class RecipePage : AppCompatActivity() {
             Log.d("APPDB start", "start "+savedContacts)
             if (savedContacts.isNotEmpty()){
                 if (contactsId.contains(code)){
-                    binding.like.setBackgroundColor(Color.BLUE)
+                    binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_off)
                     for (i in 0..savedContacts.size-1){
                         if (savedContacts[i].id == code){
                             appdb?.contactsDao()?.delete(savedContacts[i])
@@ -164,13 +164,13 @@ class RecipePage : AppCompatActivity() {
                     savedContacts = appdb!!.contactsDao().getAll()
                     Log.d("APPDB contain", "delete "+savedContacts)
                 }else{
-                    binding.like.setBackgroundColor(Color.RED)
+                    binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
                     appdb?.contactsDao()?.insertAll(contact)
                     savedContacts = appdb!!.contactsDao().getAll()
                     Log.d("APPDB isNotContain", "add "+savedContacts)
                 }
             }else{
-                binding.like.setBackgroundColor(Color.RED)
+                binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
                 appdb?.contactsDao()?.insertAll(contact)
                 savedContacts = appdb!!.contactsDao().getAll()
                 Log.d("APPDB ContactsEmpty", "add "+savedContacts)

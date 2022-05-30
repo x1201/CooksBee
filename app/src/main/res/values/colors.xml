@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="yellowtop">#EDC200</color>
     <color name="colorPrimary">#FFDB00</color>
     <color name="colorPrimaryDark">#FFDB00</color>
     <color name="textColorPrimary">#FFFFFF</color>

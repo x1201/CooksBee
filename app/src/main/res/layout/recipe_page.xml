@@ -14,23 +14,24 @@
 
         <ImageView
             android:id="@+id/titlePhoto"
-            android:layout_width="400dp"
-            android:layout_height="300dp"
+            android:layout_width="415dp"
+            android:layout_height="298dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cook" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="양배추 참치덮밥 /Cabbage tuna bowl of rice"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-black"
+            android:text="제목"
+            android:textAlignment="textStart"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titlePhoto" />
 
@@ -39,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="16dp"
             android:text="Ingredients"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -47,35 +48,22 @@
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:text="Best Review"
+            android:text="Directions"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredient" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:text="Directions"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-        <TextView
             android:id="@+id/ingredient"
             android:layout_width="373dp"
             android:layout_height="77dp"
             android:layout_marginTop="11dp"
-            android:text="참치캔 100g, 양배추 170g, 양파 1/2개, 대파 1대, 식용유 2Ts, 쌀밥 180g, 고춧가루 1Ts, 고추장 1Ts, 올리고당 1Ts, 굴소스 1Ts"
+            android:text="재료"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -87,126 +75,38 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="62dp" />
 
-        <RatingBar
-            android:id="@+id/star_point_"
-            style="?android:attr/ratingBarStyleSmall"
+        <ImageButton
+            android:id="@+id/favoriteButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="7dp"
-            android:numStars="5"
-            android:progressTint="#FFEA00"
-            android:rating="3.5"
-            android:stepSize="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        <RatingBar
-            android:id="@+id/star_point_2"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="12dp"
-            android:numStars="5"
-            android:progressTint="#FFEA00"
-            android:rating="5"
-            android:stepSize="0.5"
+            android:layout_height="48dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/ingredient"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView14"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="166dp"
-            android:layout_height="119dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.946"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:srcCompat="@drawable/review" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="22dp"
-            android:text="----------------------------------------------------------------"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/ingredient" />
+            app:srcCompat="@android:drawable/btn_star_big_off" />
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="22dp"
+            android:layout_width="296dp"
+            android:layout_height="18dp"
             android:text="----------------------------------------------------------------"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="203dp"
-            android:layout_height="93dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:text="간단하게 한끼 뚝딱이네요. 굴소스 없어서 그냥 간장 넣어서 했는데 맛있었어요. 아들래미도 맛있다며 잘 먹었네요. 좋은 레시피 감사합니다"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
-            app:layout_constraintTop_toBottomOf="@+id/star_point_2" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="12dp"
-            android:text="이성자님"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="7dp"
-            android:text="3.5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/star_point_"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/ingredient" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecipe"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="17dp"
             android:nestedScrollingEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-        <Button
-            android:id="@+id/like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
-            android:layout_marginBottom="12dp"
-            android:text="LIKE"
-            app:layout_constraintBottom_toBottomOf="@+id/titlePhoto"
-            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

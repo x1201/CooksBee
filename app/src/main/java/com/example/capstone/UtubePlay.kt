@@ -38,7 +38,7 @@ class UtubePlay : YouTubeBaseActivity() {
 
         muteNoti()
         setListener()
-        show()
+       // show()
     }
 
     private fun playVideo() {

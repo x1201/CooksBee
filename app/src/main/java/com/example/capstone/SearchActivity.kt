@@ -1,6 +1,7 @@
 package com.example.capstone
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -45,6 +46,11 @@ class SearchActivity : AppCompatActivity(){
 
         selectedIngredient = intent?.getStringExtra("select_ingredient")?: ""
         binding.SearchText.setText(selectedIngredient)
+
+        binding.BackButton.setOnClickListener({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        })
 
         binding.SearchButton.setOnClickListener(View.OnClickListener {
             var searchText = binding.SearchText.text.toString()

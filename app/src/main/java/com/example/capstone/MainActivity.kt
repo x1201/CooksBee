@@ -54,11 +54,11 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.RECORD_AUDIO), 0)
         }
 
-        binding.startbtn.setOnClickListener {
+        /*binding.startbtn.setOnClickListener {
             val intent = Intent(this, UtubeSearchActivity::class.java)
             //intent.putExtra("code", code)
             startActivity(intent)
-        }
+        }*/
 
         // 이쪽코드가 ****검색창**** 이미지뷰 코드입니다. MainSearchText를 이미지뷰id값을 넣으시면 작동됩니다.
         binding.MainSearchText.setOnClickListener({
