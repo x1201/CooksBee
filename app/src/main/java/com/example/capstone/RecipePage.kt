@@ -3,12 +3,16 @@ package com.example.capstone
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.media.AudioManager
 import android.os.*
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.speech.tts.TextToSpeech
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -41,12 +45,18 @@ class RecipePage : AppCompatActivity() {
     var picture : String = ""
     var recipePicture : String = ""
     var code : String = ""
+    var appdb : AppDatabase? = null
+    var logdb : LogDatabase? = null
+    val recipesList = arrayListOf<Recipes>()
+    val recipeAdapter = RecipeAdapter(recipesList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         code = intent?.getStringExtra("clickListId")?: ""
+
+        var contact = Contacts(0, code)
 
         db.collection("recipe")
             .document(code)
@@ -80,7 +90,6 @@ class RecipePage : AppCompatActivity() {
                 binding.name.text = name
                 binding.ingredient.text = sb
                 Glide.with(this).load(picture).into(binding.titlePhoto)
-                val recipesList : ArrayList<Recipes> = arrayListOf()
                 for (i in recipeTextList.indices){
                     if(recipeURLList[i] == "empty")//없을때 안읽어주는거 고쳐 TTS읽을때 공백인식해서 다음으로 넘기게 만들어야함
                         recipeURLList[i] = ""
@@ -95,8 +104,78 @@ class RecipePage : AppCompatActivity() {
 
                 binding.rvRecipe.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 binding.rvRecipe.setHasFixedSize(true)
-                binding.rvRecipe.adapter = RecipeAdapter(recipesList)
+                binding.rvRecipe.adapter = recipeAdapter
             }
+
+        recipeAdapter.setItemClickListener(object : RecipeAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                selectedRecipe = position
+                Toast.makeText(binding.root.context, "${position+1}번 선택됨", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        logdb = LogDatabase.getInstance(this)
+        var log = RecipeLog(0, code)
+
+        var saveLogs = logdb!!.RecipeLogDao().getAll()
+        val logid = arrayListOf<String>()
+        for (i in 0..saveLogs.size-1){
+            logid.add(saveLogs[i].id)
+            if (saveLogs[i].id == code) {
+                logdb?.RecipeLogDao()?.delete(saveLogs[i])
+            }
+        }
+        logdb?.RecipeLogDao()?.insertAll(log)
+        saveLogs = logdb!!.RecipeLogDao().getAll()
+        if (saveLogs.size > 5){
+            logdb?.RecipeLogDao()?.delete(saveLogs[0])
+        }
+
+
+        appdb = AppDatabase.getInstance(this)
+        var savedContacts = appdb!!.contactsDao().getAll()
+        Log.d("saveContacts", "Contacts" + savedContacts)
+
+        val contactsId = arrayListOf<String>()
+        for (i in 0..savedContacts.size-1){
+            contactsId.add(savedContacts[i].id)
+        }
+
+        if (contactsId.contains(code)){
+            binding.like.setBackgroundColor(Color.RED)
+        }else{
+            binding.like.setBackgroundColor(Color.BLUE)
+        }
+
+        binding.like.setOnClickListener{
+            val contactsId = arrayListOf<String>()
+            for (i in 0..savedContacts.size-1){
+                contactsId.add(savedContacts[i].id)
+            }
+            Log.d("APPDB start", "start "+savedContacts)
+            if (savedContacts.isNotEmpty()){
+                if (contactsId.contains(code)){
+                    binding.like.setBackgroundColor(Color.BLUE)
+                    for (i in 0..savedContacts.size-1){
+                        if (savedContacts[i].id == code){
+                            appdb?.contactsDao()?.delete(savedContacts[i])
+                        }
+                    }
+                    savedContacts = appdb!!.contactsDao().getAll()
+                    Log.d("APPDB contain", "delete "+savedContacts)
+                }else{
+                    binding.like.setBackgroundColor(Color.RED)
+                    appdb?.contactsDao()?.insertAll(contact)
+                    savedContacts = appdb!!.contactsDao().getAll()
+                    Log.d("APPDB isNotContain", "add "+savedContacts)
+                }
+            }else{
+                binding.like.setBackgroundColor(Color.RED)
+                appdb?.contactsDao()?.insertAll(contact)
+                savedContacts = appdb!!.contactsDao().getAll()
+                Log.d("APPDB ContactsEmpty", "add "+savedContacts)
+            }
+        }
 
     }
 

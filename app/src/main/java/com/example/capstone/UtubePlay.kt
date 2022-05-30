@@ -22,7 +22,7 @@ class UtubePlay : YouTubeBaseActivity() {
     private val handler: Handler by lazy { Handler(Looper.getMainLooper()) }//음성인식 무한 실행을 위한 핸들러 변수
     private var ytpv: YouTubePlayerView? = null
     private var ytp: YouTubePlayer? = null
-    val serverKey = "AAIzaSyCnskh-96VEakuFMHqtBAg37l14SckVX94" //콘솔에서 받아온 서버키를 넣어줍니다
+    val serverKey = "AIzaSyA3wjLVxkqdyd-dYtF-_2IRZGYrCd0jKN4" //콘솔에서 받아온 서버키를 넣어줍니다
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_utube_play)
