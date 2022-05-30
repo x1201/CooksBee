@@ -29,7 +29,7 @@ class SearchActivity : AppCompatActivity(){
     var catchUtubeText : String? = null
     var utubeText: String? = null
     var utubeData = ArrayList<SearchData>()
-    val serverKey = "AIzaSyA3wjLVxkqdyd-dYtF-_2IRZGYrCd0jKN4"
+    val serverKey = "AIzaSyCnskh-96VEakuFMHqtBAg37l14SckVX94"
     var selectedIngredient : String = ""
     //
     var db = FirebaseFirestore.getInstance()
@@ -136,7 +136,7 @@ class SearchActivity : AppCompatActivity(){
         get() {
             val originUrl = ("https://www.googleapis.com/youtube/v3/search?"
                     + "part=snippet&q=" +  utubeText
-                    + "&key=" + serverKey + "&maxResults=5")
+                    + "&key=" + serverKey + "&maxResults=2")
             val myUrl = String.format(originUrl)
             val url = URL(myUrl)
             val connection = url.openConnection() as HttpURLConnection
