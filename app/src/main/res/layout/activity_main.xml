@@ -23,7 +23,7 @@
             android:rowCount="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vp_sample">
+            app:layout_constraintTop_toBottomOf="@+id/RandomViewPager">
 
 
             <ImageButton
@@ -123,14 +123,14 @@
             android:layout_height="248dp"
 
             android:layout_marginTop="-26dp"
-            app:layout_constraintEnd_toEndOf="@id/vp_sample"
+            app:layout_constraintEnd_toEndOf="@id/RandomViewPager"
             app:layout_constraintHorizontal_bias="0.76"
             app:layout_constraintStart_toStartOf="@id/MainSearchText"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bktopyellow" />
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_sample"
+            android:id="@+id/RandomViewPager"
             android:layout_width="match_parent"
             android:layout_height="237dp"
             android:layout_row="0"

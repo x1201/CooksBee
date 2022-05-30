@@ -111,8 +111,8 @@ class MainActivity : AppCompatActivity() {
                 for(document in result){
                     DBLists!!.add(NameInfo(document.id, document.data["name"].toString(), document.data["ingredient"].toString(), document.data["picture"].toString(),document.data["tag"].toString()))
                 }
-                binding.vpSample.adapter = RandomRecipeAdapter(DBLists!!)
-                binding.vpSample.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                binding.RandomViewPager.adapter = RandomRecipeAdapter(DBLists!!)
+                binding.RandomViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             }
 
         binding.cameraSearch.setOnClickListener{
