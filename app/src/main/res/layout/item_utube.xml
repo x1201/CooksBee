@@ -45,13 +45,5 @@
             android:fontFamily="sans-serif-black"></TextView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dip"
-        android:layout_height="match_parent"
-        android:layout_weight="0"
-        android:background="#00FFFFFF"
-        android:orientation="vertical"
-        android:foreground="@drawable/bkbotop"
-        />
 </LinearLayout>
 

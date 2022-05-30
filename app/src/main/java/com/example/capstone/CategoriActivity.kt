@@ -10,12 +10,15 @@ import com.example.capstone.databinding.CategoripageBinding
 class CategoriActivity : AppCompatActivity() {
     private val binding by lazy { CategoripageBinding.inflate(layoutInflater)}
     lateinit var  catchkategori: ArrayList<NameInfo>
+    var categoriTitle: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         catchkategori = intent.getSerializableExtra("sendKategori") as ArrayList<NameInfo>
+        categoriTitle = intent.getStringExtra("CategoriName").toString()
+        binding.CategoriTitle.setText(categoriTitle)
         binding.KategoriPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.KategoriPageRecyclerView.setHasFixedSize(true)
         binding.KategoriPageRecyclerView.adapter = CategoriAdapter(catchkategori)

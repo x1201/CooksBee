@@ -82,6 +82,43 @@ class CategoriAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapte
                 } else Log.d(TAG, "양식이 없어요!")
             }
         }
+        if (SearchText.equals("동남아")) {
+            for (i in 0 until searchList.size) {
+                if (searchList[i].tag.contains("동남아")) {
+                    findLists.add(
+                        NameInfo(searchList[i].id, searchList[i].name, searchList[i].ingredient, searchList[i].url, searchList[i].tag)
+                    )
+                } else Log.d(TAG, "동남아요리가 없어요!")
+            }
+        }
+        if (SearchText.equals("멕시칸")) {
+            for (i in 0 until searchList.size) {
+                if (searchList[i].tag.contains("멕시칸")) {
+                    findLists.add(
+                        NameInfo(searchList[i].id, searchList[i].name, searchList[i].ingredient, searchList[i].url, searchList[i].tag)
+                    )
+                } else Log.d(TAG, "멕시칸요리가 없어요!")
+            }
+        }
+        if (SearchText.equals("퓨전")) {
+            for (i in 0 until searchList.size) {
+                if (searchList[i].tag.contains("퓨전")) {
+                    findLists.add(
+                        NameInfo(searchList[i].id, searchList[i].name, searchList[i].ingredient, searchList[i].url, searchList[i].tag)
+                    )
+                } else Log.d(TAG, "퓨전요리가 없어요!")
+            }
+        }
+        if (SearchText.equals("이국적")) {
+            for (i in 0 until searchList.size) {
+                if (searchList[i].tag.contains("이국적")) {
+                    findLists.add(
+                        NameInfo(searchList[i].id, searchList[i].name, searchList[i].ingredient, searchList[i].url, searchList[i].tag)
+                    )
+                } else Log.d(TAG, "이국적인요리가 없어요!")
+            }
+        }
+
     }
 
 
