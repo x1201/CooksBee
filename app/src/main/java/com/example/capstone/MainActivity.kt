@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.capstone.databinding.ActivityMainBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
@@ -110,6 +111,8 @@ class MainActivity : AppCompatActivity() {
                 for(document in result){
                     DBLists!!.add(NameInfo(document.id, document.data["name"].toString(), document.data["ingredient"].toString(), document.data["picture"].toString(),document.data["tag"].toString()))
                 }
+                binding.vpSample.adapter = RandomRecipeAdapter(DBLists!!)
+                binding.vpSample.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             }
 
         binding.cameraSearch.setOnClickListener{
