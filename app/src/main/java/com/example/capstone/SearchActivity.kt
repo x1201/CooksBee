@@ -82,6 +82,11 @@ class SearchActivity : AppCompatActivity(){
                 binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 binding.SearchPageRecyclerView.setHasFixedSize(true)
                 binding.SearchPageRecyclerView.adapter = SearchAdapter(adapterCatchLists)
+                if(adapterCatchLists.size == 0){
+                    binding.itemEmpty.visibility = View.VISIBLE
+                }else{
+                    binding.itemEmpty.visibility = View.INVISIBLE
+                }
             }
         })
 
@@ -93,6 +98,11 @@ class SearchActivity : AppCompatActivity(){
                 binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 binding.SearchPageRecyclerView.setHasFixedSize(true)
                 binding.SearchPageRecyclerView.adapter = SearchAdapter(adapterCatchLists)
+                if(adapterCatchLists.size == 0){
+                    binding.itemEmpty.visibility = View.VISIBLE
+                }else{
+                    binding.itemEmpty.visibility = View.INVISIBLE
+                }
             }
         })
 

@@ -180,6 +180,7 @@ class MainActivity : AppCompatActivity() {
                         binding.rvRecipeLog.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
                         binding.rvRecipeLog.setHasFixedSize(true)
                         binding.rvRecipeLog.adapter = SearchAdapter(recipeLogList)
+
                     }
             }
         }

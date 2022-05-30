@@ -109,11 +109,11 @@ class RecipePage : AppCompatActivity() {
 
         recipeAdapter.setItemClickListener(object : RecipeAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
+                stopTTS()
+                selectedRecipe = position
                 //선택한 레시피순서 위치로 오토스크롤
-                selectedRecipe = position-1
                 autoScroll()
                 //선택한 레시피 TTS재생
-                selectedRecipe += 1
                 startTTS()
                // Toast.makeText(binding.root.context, "${position+1}번 선택됨", Toast.LENGTH_SHORT).show()
             }
@@ -356,9 +356,9 @@ class RecipePage : AppCompatActivity() {
 
     private fun autoScroll(){
         if(selectedRecipe == 0)
-            binding.nestrdScrollView.scrollTo(0, binding.textView3.bottom)
+            binding.nestrdScrollView.smoothScrollTo(0, binding.textView3.bottom)
         else
-            binding.nestrdScrollView.scrollTo(0, binding.rvRecipe[selectedRecipe+1].bottom)
+            binding.nestrdScrollView.smoothScrollTo(0, binding.rvRecipe[selectedRecipe].bottom)
     }
 
 }

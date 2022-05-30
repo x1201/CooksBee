@@ -96,5 +96,17 @@
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:srcCompat="@drawable/utubetab" />
 
+    <TextView
+        android:id="@+id/itemEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="레시피가 없어요"
+        android:textSize="34sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/SearchPageRecyclerView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
