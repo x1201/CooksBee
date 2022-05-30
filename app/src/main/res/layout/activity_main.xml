@@ -1,91 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestrdScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/startbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="youtube"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:backgroundTint="#00FFFFFF">
 
-        <EditText
-            android:id="@+id/MainSearchText"
-            android:layout_width="360dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="레시피를 검색하세요" />
 
-        <Button
-            android:id="@+id/MainSearchButton"
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="194dp"
+            android:columnCount="4"
+            android:orientation="horizontal"
+            android:rowCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainThumb2">
+
+
+            <ImageButton
+                android:id="@+id/koreaFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:backgroundTint="#FFFFFF"
+                app:srcCompat="@drawable/kfb" />
+
+
+            <ImageButton
+                android:id="@+id/chinaFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:backgroundTint="#FFFFFF"
+                app:srcCompat="@drawable/cfb" />
+
+            <ImageButton
+                android:id="@+id/japanFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:backgroundTint="#FFFFFF"
+                app:srcCompat="@drawable/jfb" />
+
+
+            <ImageButton
+                android:id="@+id/asianFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:backgroundTint="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:srcCompat="@drawable/afb" />
+
+            <ImageButton
+                android:id="@+id/mexicanFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:backgroundTint="#00FBF7F7"
+                app:srcCompat="@drawable/mfb" />
+
+
+            <ImageButton
+                android:id="@+id/americaFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:backgroundTint="#00FBF7F7"
+                app:srcCompat="@drawable/ufb" />
+
+            <ImageButton
+                android:id="@+id/fusionFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:backgroundTint="#00FBF7F7"
+                app:srcCompat="@drawable/ffb" />
+
+            <ImageButton
+                android:id="@+id/globalFood"
+                android:layout_width="84dp"
+                android:layout_height="97dp"
+                android:layout_row="1"
+                android:layout_column="3"
+                android:backgroundTint="#00FBF7F7"
+                app:srcCompat="@drawable/gfb" />
+
+
+        </GridLayout>
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/imageView4"-->
+        <!--        android:layout_width="414dp"-->
+        <!--        android:layout_height="172dp"-->
+        <!--        android:layout_marginTop="24dp"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintHorizontal_bias="0.0"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/textView4"-->
+        <!--        app:srcCompat="@drawable/sum1" />-->
+
+
+        <ImageView
+            android:id="@+id/backgroundTop"
+            android:layout_width="424dp"
+            android:layout_height="248dp"
+
+            android:layout_marginTop="-26dp"
+            app:layout_constraintEnd_toEndOf="@id/mainThumb2"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toStartOf="@id/MainSearchText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bktopyellow" />
+
+        <ImageView
+            android:id="@+id/mainThumb2"
+            android:layout_width="410dp"
+            android:layout_height="237dp"
+            android:layout_row="0"
+            android:layout_column="7"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MainSearchText"
+            app:srcCompat="@drawable/mainthumb" />
+
+        <ImageView
+            android:id="@+id/backgroundBottom"
+            android:layout_width="525dp"
+            android:layout_height="823dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            app:srcCompat="@drawable/bkbt1" />
+
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="최근 레시피 >"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="77dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toStartOf="@+id/favorite"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+
+        <ImageView
+            android:id="@+id/MainSearchText"
+            android:layout_width="389dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:text="검색" />
-    </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:srcCompat="@drawable/search" />
 
-    <Button
-        android:id="@+id/koreaFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="한식요리"
-        app:layout_constraintBottom_toTopOf="@+id/startbtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <ImageButton
+            android:id="@+id/cameraSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="132dp"
+            android:backgroundTint="#FFC107"
+            app:layout_constraintBottom_toBottomOf="@+id/backgroundTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <Button
-        android:id="@+id/chinaFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="중식요리"
-        app:layout_constraintBottom_toTopOf="@+id/startbtn"
-        app:layout_constraintStart_toEndOf="@+id/koreaFood"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <ImageButton
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="132dp"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/backgroundTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/btn_star" />
 
-    <Button
-        android:id="@+id/japanFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="일식요리"
-        app:layout_constraintBottom_toTopOf="@+id/startbtn"
-        app:layout_constraintStart_toEndOf="@+id/chinaFood"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/americaFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:text="양식 요리"
-        app:layout_constraintBottom_toTopOf="@+id/startbtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/japanFood"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/cameraSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="카메라검색"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startbtn" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
