@@ -109,8 +109,13 @@ class RecipePage : AppCompatActivity() {
 
         recipeAdapter.setItemClickListener(object : RecipeAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
-                selectedRecipe = position
-                Toast.makeText(binding.root.context, "${position+1}번 선택됨", Toast.LENGTH_SHORT).show()
+                //선택한 레시피순서 위치로 오토스크롤
+                selectedRecipe = position-1
+                autoScroll()
+                //선택한 레시피 TTS재생
+                selectedRecipe += 1
+                startTTS()
+               // Toast.makeText(binding.root.context, "${position+1}번 선택됨", Toast.LENGTH_SHORT).show()
             }
         })
 
