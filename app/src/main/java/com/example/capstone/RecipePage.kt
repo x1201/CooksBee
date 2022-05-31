@@ -193,7 +193,7 @@ class RecipePage : AppCompatActivity() {
         handler.removeCallbacksAndMessages(null);
         val audioManager: AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         val thisVol : Int = audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION)
-        if (thisVol != 0) {
+        if (thisVol == 0) {
             audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 5,0)//음성인식때문에 음소거되어있던 알림소리 정상화
         }
 
@@ -291,14 +291,17 @@ class RecipePage : AppCompatActivity() {
                         speechText = matches[i]
                     }
                     if ((speechText.contains("시작"))||(speechText.contains("시")&&speechText.contains("작"))){
+                        stopTTS()
                         startTTS()
                         autoScroll()
                     }
                     if( (speechText.contains("다음")) || (speechText.contains("다")&&speechText.contains("음")) ){
+                        stopTTS()
                         nextTTS()
                         autoScroll()
                     }
                     if((speechText.contains("이전"))||(speechText.contains("이")&&speechText.contains("전"))){
+                        stopTTS()
                         prevTTS()
                         autoScroll()
                     }
