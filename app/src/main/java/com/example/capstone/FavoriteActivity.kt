@@ -80,6 +80,9 @@ class FavoriteActivity : AppCompatActivity() {
                         binding.rvFavorites.adapter = SearchAdapter(favoriteList)
                     }
             }
+        }else{//마지막 남은 즐겨찾기 지워진걸 나타내기위해
+            SearchAdapter(favoriteList).notifyDataSetChanged()
+            binding.rvFavorites.adapter = SearchAdapter(favoriteList)
         }
     }
 
