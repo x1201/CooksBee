@@ -4,17 +4,12 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.youtube.player.internal.i
-import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
 import kotlin.collections.ArrayList
 
 class RandomRecipeAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Adapter<RandomRecipeAdapter.CustomViewHolder>(){
@@ -25,6 +20,7 @@ class RandomRecipeAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Ad
     inner class CustomViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder
         (LayoutInflater.from(parent.context).inflate(R.layout.recipe_image, parent, false)){
         val recipePicture = itemView.findViewById<ImageView>(R.id.imageView_recipe)
+        val recipeTitle = itemView.findViewById<TextView>(R.id.imageView_title)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = CustomViewHolder((parent))
 
@@ -46,7 +42,7 @@ class RandomRecipeAdapter(val searchList: ArrayList<NameInfo>) : RecyclerView.Ad
 
 
         Glide.with(holder.recipePicture.context).load(RandomRecipe.get(position).url).into(holder.recipePicture)
-
+        holder.recipeTitle.text = RandomRecipe.get(position).name
         val clickListId = RandomRecipe.get(position).id
 
         holder.recipePicture.setOnClickListener {
