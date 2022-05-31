@@ -22,10 +22,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/bmjua"
         android:text="오늘의 추천 레시피>"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_recipe"
         app:layout_constraintStart_toStartOf="@+id/imageView_recipe" />
+
+    <TextView
+        android:id="@+id/imageView_title"
+        android:layout_width="244dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/bmjua"
+        android:text="레시피이름"
+        android:textAlignment="textStart"
+        android:textColor="#FAFAFA"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView_recipe"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
