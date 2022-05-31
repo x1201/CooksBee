@@ -31,8 +31,8 @@
 
     <TextView
         android:id="@+id/imageView_title"
-        android:layout_width="244dp"
-        android:layout_height="39dp"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
         android:layout_marginStart="12dp"
         android:fontFamily="@font/bmjua"
         android:text="레시피이름"
