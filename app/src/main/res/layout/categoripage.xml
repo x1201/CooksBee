@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/categorytopbkgr" />
+        app:srcCompat="@drawable/categorytopbkyellow4" />
 
     <TextView
         android:id="@+id/CategoriTitle"
@@ -26,7 +26,7 @@
         android:layout_marginTop="40dp"
         android:fontFamily="@font/bmjua"
         android:text="카테고리"
-        android:textColor="#F6EED0"
+        android:textColor="#F6F6EB"
         android:textSize="29sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -42,24 +42,21 @@
         android:fontFamily="@font/tmon"
         android:shadowColor="#F4E3E3"
         android:text="category"
-        android:textColor="#F8F8EC"
+        android:textColor="#F6F6EB"
         app:layout_constraintStart_toEndOf="@+id/CategoriTitle"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/KategoriPageRecyclerView"
-        android:layout_width="412dp"
-        android:layout_height="705dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="35dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CategoriTitle"
-        app:layout_constraintVertical_bias="0.451">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -146,9 +146,9 @@ class RecipePage : AppCompatActivity() {
         }
 
         if (contactsId.contains(code)){
-            binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
+            binding.favoriteButton.setImageResource(R.drawable.favorite2_on)
         }else{
-            binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_off)
+            binding.favoriteButton.setImageResource(R.drawable.favorite2_off)
         }
 
         binding.favoriteButton.setOnClickListener{
@@ -159,7 +159,7 @@ class RecipePage : AppCompatActivity() {
             Log.d("APPDB start", "start "+savedContacts)
             if (savedContacts.isNotEmpty()){
                 if (contactsId.contains(code)){
-                    binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_off)
+                    binding.favoriteButton.setImageResource(R.drawable.favorite2_off)
                     for (i in 0..savedContacts.size-1){
                         if (savedContacts[i].id == code){
                             appdb?.contactsDao()?.delete(savedContacts[i])
@@ -168,13 +168,13 @@ class RecipePage : AppCompatActivity() {
                     savedContacts = appdb!!.contactsDao().getAll()
                     Log.d("APPDB contain", "delete "+savedContacts)
                 }else{
-                    binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
+                    binding.favoriteButton.setImageResource(R.drawable.favorite2_on)
                     appdb?.contactsDao()?.insertAll(contact)
                     savedContacts = appdb!!.contactsDao().getAll()
                     Log.d("APPDB isNotContain", "add "+savedContacts)
                 }
             }else{
-                binding.favoriteButton.setImageResource(android.R.drawable.btn_star_big_on)
+                binding.favoriteButton.setImageResource(R.drawable.favorite2_on)
                 appdb?.contactsDao()?.insertAll(contact)
                 savedContacts = appdb!!.contactsDao().getAll()
                 Log.d("APPDB ContactsEmpty", "add "+savedContacts)
