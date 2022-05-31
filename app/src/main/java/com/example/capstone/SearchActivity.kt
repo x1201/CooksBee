@@ -107,6 +107,7 @@ class SearchActivity : AppCompatActivity(){
         })
 
         binding.UtubePageButton.setOnClickListener({
+            binding.itemEmpty.visibility = View.INVISIBLE
             if(utubeText == null){
                 Log.d(TAG,"name은 null값입니다!")
             }
@@ -198,7 +199,8 @@ class SearchActivity : AppCompatActivity(){
                 // 재생시
                 // 필요합니다.
             } else {
-                c.getJSONObject("id").getString("playlistId") // 유튜브
+                continue
+               // c.getJSONObject("id").getString("playlistId") // 유튜브
             }
             val title = c.getJSONObject("snippet").getString("title") //유튜브 제목을 받아옵니다
             val changString = stringToHtmlSign(title)
