@@ -18,12 +18,13 @@
             android:id="@+id/gridLayout"
             android:layout_width="wrap_content"
             android:layout_height="194dp"
+            android:layout_marginTop="235dp"
             android:columnCount="4"
             android:orientation="horizontal"
             android:rowCount="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/RandomViewPager">
+            app:layout_constraintTop_toTopOf="@+id/thumbback">
 
 
             <ImageButton
@@ -124,29 +125,47 @@
 
             android:layout_marginTop="-26dp"
             app:layout_constraintEnd_toEndOf="@id/RandomViewPager"
-            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="@id/MainSearchText"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bktopyellow" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/RandomViewPager"
-            android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_row="0"
-            android:layout_column="7"
+
+        <ImageView
+            android:id="@+id/thumbback"
+            android:layout_width="360dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="145dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/MainSearchText" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/shadow" />
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/RandomViewPager"
+            android:layout_width="347dp"
+            android:layout_height="216dp"
+            android:layout_row="0"
+            android:layout_column="7"
+            android:layout_marginTop="19dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MainSearchText">
+
+
+        </androidx.viewpager2.widget.ViewPager2>
+
 
         <ImageView
             android:id="@+id/backgroundBottom"
             android:layout_width="525dp"
             android:layout_height="823dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gridLayout"
             app:srcCompat="@drawable/bkbt1" />
@@ -155,10 +174,12 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="39dp"
+            android:fontFamily="@font/bmjua"
             android:text="최근 레시피 >"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintHorizontal_bias="0.033"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
@@ -166,24 +187,23 @@
             android:id="@+id/imageView5"
             android:layout_width="77dp"
             android:layout_height="31dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="56dp"
             app:layout_constraintEnd_toStartOf="@+id/favorites"
-            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintHorizontal_bias="0.057"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
-
+            app:srcCompat="@drawable/newlogo2" />
 
         <ImageView
             android:id="@+id/MainSearchText"
             android:layout_width="389dp"
             android:layout_height="43dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="90dp"
             android:layout_weight="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5"
-            app:srcCompat="@drawable/search" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/newsearchbar" />
 
         <ImageButton
             android:id="@+id/cameraSearch"
@@ -213,12 +233,13 @@
             android:id="@+id/rvRecipeLog"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
