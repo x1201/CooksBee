@@ -53,7 +53,6 @@ class RecipePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         code = intent?.getStringExtra("clickListId")?: ""
 
         var contact = Contacts(0, code)
@@ -184,6 +183,11 @@ class RecipePage : AppCompatActivity() {
 
     }
 
+    override fun onStop() {
+        super.onStop()
+        stopTTS()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         // TTS 객체가 남아있다면 실행을 중지하고 메모리에서 제거한다.
@@ -192,6 +196,7 @@ class RecipePage : AppCompatActivity() {
             tts!!.shutdown()
             tts = null
         }
+
 
     }
     private fun muteNoti(){//알림음 뮤트
@@ -270,20 +275,20 @@ class RecipePage : AppCompatActivity() {
                     for (i in 0 until matches.size) {
                         speechText = matches[i]
                     }
-                    if (speechText.contains("시작")){
+                    if ((speechText.contains("시작"))||(speechText.contains("시")&&speechText.contains("작"))){
                         startTTS()
                         autoScroll()
                     }
-                    if(speechText.contains("다음")){
+                    if( (speechText.contains("다음")) || (speechText.contains("다")&&speechText.contains("음")) ){
                         nextTTS()
                         autoScroll()
                     }
-                    if(speechText.contains("이전")){
+                    if((speechText.contains("이전"))||(speechText.contains("이")&&speechText.contains("전"))){
                         prevTTS()
                         autoScroll()
                     }
                     if(speechText.contains("정지")){
-                        stopTTS()
+
                     }
                     if(speechText.contains("빠르게")){
 
@@ -301,7 +306,10 @@ class RecipePage : AppCompatActivity() {
                         speechText = matches[i]
                         //println("STT-TEST: PART " + speechText)
                     }
-                    if(speechText.contains("멈춰")){
+                    if(speechText.contains("멈춰")||speechText.contains("멍청")||speechText.contains("멍청이")||speechText.contains("엄청")){
+                        stopTTS()
+                    }
+                    if(speechText.contains("멈")&&speechText.contains("춰")){
                         stopTTS()
                     }
                 }
@@ -314,9 +322,8 @@ class RecipePage : AppCompatActivity() {
     }
 
     private fun show(){//STT무한 실행
-
-        startSTT()
-        handler.postDelayed(::show, 1000)
+            startSTT()
+            handler.postDelayed(::show, 1000)
     }
 
     private fun makeTTS(){//TTS만들기
@@ -336,9 +343,14 @@ class RecipePage : AppCompatActivity() {
 
     private fun nextTTS(){//다음 TTS
         selectedRecipe += 1
-        tts?.speak(recipeTextList[selectedRecipe], TextToSpeech.QUEUE_FLUSH, null)
-        if(selectedRecipe > recipeTextList.size){
-            selectedRecipe = 0
+        if(selectedRecipe >= recipesList.size){
+            Toast.makeText(binding.root.context, "마지막입니다.",Toast.LENGTH_SHORT).show()
+            selectedRecipe -=1
+        }else {
+            tts?.speak(recipeTextList[selectedRecipe], TextToSpeech.QUEUE_FLUSH, null)
+            if (selectedRecipe > recipeTextList.size) {
+                selectedRecipe = 0
+            }
         }
     }
 

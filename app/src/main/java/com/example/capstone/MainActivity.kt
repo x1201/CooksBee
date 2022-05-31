@@ -188,6 +188,40 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        logdb = LogDatabase.getInstance(this)
+        var savedLogs = logdb!!.RecipeLogDao().getAll()
+        val logsId = ArrayList<String>()
+        recipeLogList.removeAll(recipeLogList)
+        for (i in savedLogs.size-1 downTo 0){
+            logsId.add(savedLogs[i].id)
+        }
+        if (logsId.isNotEmpty()){
+            for (i in 0..logsId.size-1){
+                db.collection("recipe")
+                    .document(logsId[i])
+                    .get()
+                    .addOnSuccessListener { document ->
+                        recipeLogList!!.add(
+                            NameInfo(
+                                logsId[i],
+                                document["name"] as String,
+                                document["ingredient"] as String,
+                                document["picture"] as String,
+                                document["tag"] as String
+                            )
+                        )
+                        SearchAdapter(recipeLogList).notifyDataSetChanged()
+                        binding.rvRecipeLog.adapter = SearchAdapter(recipeLogList)
+                    }
+            }
+        }
+
+    }
+
+
     override fun onDestroy() {
         super.onDestroy()
         val audioManager: AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager

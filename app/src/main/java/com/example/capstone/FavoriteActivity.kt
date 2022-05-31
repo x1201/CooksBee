@@ -50,4 +50,37 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        appdb = AppDatabase.getInstance(this)
+        var savedContacts = appdb!!.contactsDao().getAll()
+        val contactsId = ArrayList<String>()
+        favoriteList.removeAll(favoriteList)
+        for (i in 0..savedContacts.size-1){
+            contactsId.add(savedContacts[i].id)
+            Log.d("savrdContacts", " " + savedContacts)
+        }
+        if(contactsId.isNotEmpty()) {
+            for (i in 0..contactsId.size - 1) {
+                db.collection("recipe")
+                    .document(contactsId[i])
+                    .get()
+                    .addOnSuccessListener { document ->
+                        favoriteList!!.add(
+                            NameInfo(
+                                contactsId[i],
+                                document["name"] as String,
+                                document["ingredient"] as String,
+                                document["picture"] as String,
+                                document["tag"] as String
+                            )
+                        )
+                        SearchAdapter(favoriteList).notifyDataSetChanged()
+                        binding.rvFavorites.adapter = SearchAdapter(favoriteList)
+                    }
+            }
+        }
+    }
+
 }
