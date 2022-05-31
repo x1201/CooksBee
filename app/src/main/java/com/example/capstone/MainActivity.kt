@@ -70,70 +70,8 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this,CategoriActivity::class.java)
 
-        binding.koreaFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("한식")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "한식 요리")
-            startActivity(intent)
-        }
-        binding.chinaFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("중식")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "중식 요리")
-            startActivity(intent)
-        }
-        binding.japanFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("일식")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "일식 요리")
-            startActivity(intent)
-        }
-        binding.americaFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("양식")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "양식 요리")
-            startActivity(intent)
-        }
-        binding.asianFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("동남아")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "아시안 요리")
-            startActivity(intent)
-        }
-        binding.mexicanFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("멕시칸")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "멕시칸 요리")
-            startActivity(intent)
-        }
-        binding.fusionFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("퓨전")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "퓨전 요리")
-            startActivity(intent)
-        }
-        binding.globalFood.setOnClickListener{
-            val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
-            (mAdapter as CategoriAdapter).kategori("이국적")
-            kategoriCatchLists = (mAdapter).returnKategori()
-            intent.putExtra("sendKategori",kategoriCatchLists)
-            intent.putExtra("CategoriName", "이국적인 요리")
-            startActivity(intent)
-        }
+
+
 
         binding.favorites.setOnClickListener {
             val intent = Intent(this, FavoriteActivity::class.java)
@@ -147,8 +85,74 @@ class MainActivity : AppCompatActivity() {
                 for(document in result){
                     DBLists!!.add(NameInfo(document.id, document.data["name"].toString(), document.data["ingredient"].toString(), document.data["picture"].toString(),document.data["tag"].toString()))
                 }
+                //랜덤추천 레시피
                 binding.RandomViewPager.adapter = RandomRecipeAdapter(DBLists!!)
                 binding.RandomViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                //카테고리 버튼
+                binding.koreaFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("한식")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "한식 요리")
+                    startActivity(intent)
+                }
+                binding.chinaFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("중식")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "중식 요리")
+                    startActivity(intent)
+                }
+                binding.japanFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("일식")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "일식 요리")
+                    startActivity(intent)
+                }
+                binding.americaFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("양식")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "양식 요리")
+                    startActivity(intent)
+                }
+                binding.asianFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("동남아")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "아시안 요리")
+                    startActivity(intent)
+                }
+                binding.mexicanFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("멕시칸")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "멕시칸 요리")
+                    startActivity(intent)
+                }
+                binding.fusionFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("퓨전")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "퓨전 요리")
+                    startActivity(intent)
+                }
+                binding.globalFood.setOnClickListener{
+                    val mAdapter : RecyclerView.Adapter<*> = CategoriAdapter(DBLists!!)
+                    (mAdapter as CategoriAdapter).kategori("이국적")
+                    kategoriCatchLists = (mAdapter).returnKategori()
+                    intent.putExtra("sendKategori",kategoriCatchLists)
+                    intent.putExtra("CategoriName", "이국적인 요리")
+                    startActivity(intent)
+                }
             }
 
         binding.cameraSearch.setOnClickListener{

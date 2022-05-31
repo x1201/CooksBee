@@ -183,8 +183,20 @@ class RecipePage : AppCompatActivity() {
 
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        muteNoti()
+        show()
+    }
     override fun onStop() {
         super.onStop()
+        handler.removeCallbacksAndMessages(null);
+        val audioManager: AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+        val thisVol : Int = audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION)
+        if (thisVol != 0) {
+            audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 5,0)//음성인식때문에 음소거되어있던 알림소리 정상화
+        }
+
         stopTTS()
     }
 
@@ -202,7 +214,10 @@ class RecipePage : AppCompatActivity() {
     private fun muteNoti(){//알림음 뮤트
         val audioManager: AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         val muteValue =  AudioManager.ADJUST_MUTE
-        audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, muteValue, 0)
+        val thisVol : Int = audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION)
+        if (thisVol != 0) {
+            audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, muteValue, 0)
+        }
     }
 
     private fun startSTT(){//STT시작
