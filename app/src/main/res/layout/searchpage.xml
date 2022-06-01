@@ -5,8 +5,30 @@
     android:id="@+id/Const"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFE">
+    android:background="#FFFFFE"
+    android:focusableInTouchMode="true">
 
+
+    <ImageView
+        android:id="@+id/searchTab"
+        android:layout_width="420dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/searchtab" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/SearchPageRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/searchtab" />
 
     <ImageButton
         android:id="@+id/RecipePageButton"
@@ -31,27 +53,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:srcCompat="@drawable/utubetab2" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/SearchPageRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/searchtab" />
-
-    <ImageView
-        android:id="@+id/searchTab"
-        android:layout_width="420dp"
-        android:layout_height="57dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/searchtab" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -102,22 +103,10 @@
             android:layout_weight="1"
             android:background="@drawable/searchbar2"
             android:fontFamily="@font/bmjua"
-            android:iconifiedByDefault="true"
+            android:iconifiedByDefault="false"
             android:paddingLeft="10dp"
             android:queryHint="레시피를 검색하세요" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/itemEmpty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="레시피가 없어요"
-        android:textSize="34sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/SearchPageRecyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchPageRecyclerView"
@@ -132,6 +121,18 @@
         app:layout_constraintTop_toBottomOf="@id/RecipePageButton">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/itemEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="레시피가 없어요"
+        android:textSize="34sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/SearchPageRecyclerView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
