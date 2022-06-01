@@ -2,85 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Const"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFE">
 
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/SearchPageRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/searchtab" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:background="#FFDB00"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/BackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="#FFDB00"
-            android:scaleType="centerCrop"
-            app:srcCompat="?attr/homeAsUpIndicator" />
-
-        <EditText
-            android:id="@+id/SearchText"
-            android:layout_width="295dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/searchbar2"
-            android:fontFamily="@font/bmjua"
-            android:hint="레시피를 검색하세요"
-            android:paddingLeft="10dp" />
-
-        <ImageButton
-            android:id="@+id/SearchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="#FFDB00"
-            android:scaleType="centerCrop"
-            android:text="검색"
-            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/SearchPageRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RecipePageButton">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <ImageView
-        android:id="@+id/searchTab"
-        android:layout_width="420dp"
-        android:layout_height="57dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/searchtab" />
 
     <ImageButton
         android:id="@+id/RecipePageButton"
@@ -106,6 +32,81 @@
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:srcCompat="@drawable/utubetab2" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/SearchPageRecyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/searchtab" />
+
+    <ImageView
+        android:id="@+id/searchTab"
+        android:layout_width="420dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/searchtab" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFDB00"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/SearchText"
+            android:layout_width="295dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/searchbar2"
+            android:fontFamily="@font/bmjua"
+            android:hint="레시피를 검색하세요"
+            android:paddingLeft="10dp"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/BackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#FFDB00"
+            android:scaleType="centerCrop"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+        <ImageButton
+            android:id="@+id/SearchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#FFDB00"
+            android:scaleType="centerCrop"
+            android:text="검색"
+            android:visibility="gone"
+            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
+        <SearchView
+            android:id="@+id/SearchView"
+            android:layout_width="295dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/searchbar2"
+            android:fontFamily="@font/bmjua"
+            android:iconifiedByDefault="true"
+            android:paddingLeft="10dp"
+            android:queryHint="레시피를 검색하세요" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/itemEmpty"
         android:layout_width="wrap_content"
@@ -117,6 +118,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/SearchPageRecyclerView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/SearchPageRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RecipePageButton">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

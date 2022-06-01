@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,17 +44,68 @@ class SearchActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
+        binding.Const.setOnClickListener({
+            binding.SearchView.isIconified = true
+        })
         selectedIngredient = intent?.getStringExtra("select_ingredient")?: ""
-        binding.SearchText.setText(selectedIngredient)
+        binding.SearchView.setQuery(selectedIngredient,false)
 
         binding.BackButton.setOnClickListener({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         })
+        binding.SearchView.setOnClickListener({
+            binding.SearchView.isIconified = false
+        })
+
+
+        binding.SearchView.setOnQueryTextListener(object  : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                var searchText = binding.SearchView.query.toString()
+                utubeText = searchText
+
+                if(searchText.equals("")) {
+                    Log.d(TAG,"null")
+                }
+                else{
+                    val mAdapter : RecyclerView.Adapter<*> = SearchAdapter(DBLists!!) //searchAdapter의 searchList에 데이터베이스의 모든 레시피를 보내 filter에서 검색을 돌리도록하는것
+                    (mAdapter as SearchAdapter).filter(searchText) //searchText는 searchAdapter의 filter의 searchText가되어 검색어가된다.
+                    adapterCatchLists = (mAdapter).returnRecipe()
+                    //
+
+                    if(utubeText!!.contains('#')){
+                        var utubeSplitText: List<String>
+                        var tempUtubeText: String? = null
+                        utubeSplitText = utubeText!!.split('#')
+                        Log.d(TAG,"utubeSplitText = ${utubeSplitText} 입니다")
+                        tempUtubeText = utubeSplitText[0]
+                        for(i in 1 until utubeSplitText.size){
+                            tempUtubeText += utubeSplitText[i]
+                        }
+                        utubeText = tempUtubeText
+                    }
+                    Log.d(TAG,"utubeText = ${utubeText} 입니다.")
+                    search()
+                    //
+                    binding.SearchPageRecyclerView.layoutManager = LinearLayoutManager(this@SearchActivity, LinearLayoutManager.VERTICAL, false)
+                    binding.SearchPageRecyclerView.setHasFixedSize(true)
+                    binding.SearchPageRecyclerView.adapter = SearchAdapter(adapterCatchLists)
+                    if(adapterCatchLists.size == 0){
+                        binding.itemEmpty.visibility = View.VISIBLE
+                    }else{
+                        binding.itemEmpty.visibility = View.INVISIBLE
+                    }
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+        })
 
         binding.SearchButton.setOnClickListener(View.OnClickListener {
-            var searchText = binding.SearchText.text.toString()
+            var searchText = binding.SearchView.query.toString()
             utubeText = searchText
 
             if(searchText.equals("")) {
