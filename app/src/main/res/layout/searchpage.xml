@@ -102,23 +102,10 @@
             android:layout_weight="1"
             android:background="@drawable/searchbar2"
             android:fontFamily="@font/bmjua"
-            android:iconifiedByDefault="true"
+            android:iconifiedByDefault="false"
             android:paddingLeft="10dp"
             android:queryHint="레시피를 검색하세요" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/itemEmpty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/bmjua"
-        android:text="레시피가 없어요"
-        android:textSize="34sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/SearchPageRecyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/SearchPageRecyclerView"
@@ -135,6 +122,19 @@
         app:layout_constraintVertical_bias="0.0">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/itemEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bmjua"
+        android:text="레시피가 없어요"
+        android:textSize="34sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/SearchPageRecyclerView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

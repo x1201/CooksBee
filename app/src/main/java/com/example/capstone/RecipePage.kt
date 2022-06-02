@@ -185,18 +185,11 @@ class RecipePage : AppCompatActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        muteNoti()
         show()
     }
     override fun onStop() {
         super.onStop()
         handler.removeCallbacksAndMessages(null);
-        val audioManager: AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager
-        val thisVol : Int = audioManager.getStreamVolume(AudioManager.STREAM_NOTIFICATION)
-        if (thisVol == 0) {
-            audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, 5,0)//음성인식때문에 음소거되어있던 알림소리 정상화
-        }
-
         stopTTS()
     }
 
@@ -208,8 +201,6 @@ class RecipePage : AppCompatActivity() {
             tts!!.shutdown()
             tts = null
         }
-
-
     }
     private fun muteNoti(){//알림음 뮤트
         val audioManager: AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager
@@ -290,17 +281,17 @@ class RecipePage : AppCompatActivity() {
                     for (i in 0 until matches.size) {
                         speechText = matches[i]
                     }
-                    if ((speechText.contains("시작"))||(speechText.contains("시")&&speechText.contains("작"))){
+                    if ((speechText.contains("시작"))||speechText.contains("시장")||(speechText.contains("시")&&speechText.contains("작"))){
                         stopTTS()
                         startTTS()
                         autoScroll()
                     }
-                    if( (speechText.contains("다음")) || (speechText.contains("다")&&speechText.contains("음")) ){
+                    if( (speechText.contains("다음")) ||speechText.contains("다응")|| (speechText.contains("다")&&speechText.contains("음")) ){
                         stopTTS()
                         nextTTS()
                         autoScroll()
                     }
-                    if((speechText.contains("이전"))||(speechText.contains("이")&&speechText.contains("전"))){
+                    if((speechText.contains("이전"))||speechText.contains("이정")||speechText.contains("이점")||(speechText.contains("이")&&speechText.contains("전"))){
                         stopTTS()
                         prevTTS()
                         autoScroll()
