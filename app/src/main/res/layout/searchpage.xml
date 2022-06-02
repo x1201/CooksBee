@@ -5,8 +5,7 @@
     android:id="@+id/Const"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFE"
-    android:focusableInTouchMode="true">
+    android:background="#FFFFFE">
 
 
     <ImageView
@@ -34,7 +33,7 @@
         android:id="@+id/RecipePageButton"
         android:layout_width="199dp"
         android:layout_height="59dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="38dp"
         android:backgroundTint="#FFDB00"
         app:layout_constraintEnd_toStartOf="@+id/UtubePageButton"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,7 +45,7 @@
         android:id="@+id/UtubePageButton"
         android:layout_width="200dp"
         android:layout_height="59dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="38dp"
         android:backgroundTint="#FFDB00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -57,7 +56,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="34dp"
         android:layout_marginTop="10dp"
         android:background="#FFDB00"
         android:orientation="horizontal"
@@ -77,7 +76,7 @@
 
         <ImageButton
             android:id="@+id/BackButton"
-            android:layout_width="wrap_content"
+            android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="#FFDB00"
@@ -103,29 +102,16 @@
             android:layout_weight="1"
             android:background="@drawable/searchbar2"
             android:fontFamily="@font/bmjua"
-            android:iconifiedByDefault="false"
+            android:iconifiedByDefault="true"
             android:paddingLeft="10dp"
             android:queryHint="레시피를 검색하세요" />
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/SearchPageRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RecipePageButton">
-
-    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/itemEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bmjua"
         android:text="레시피가 없어요"
         android:textSize="34sp"
         android:visibility="invisible"
@@ -133,6 +119,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/SearchPageRecyclerView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/SearchPageRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RecipePageButton"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
