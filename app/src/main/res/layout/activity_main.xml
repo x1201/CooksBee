@@ -34,7 +34,7 @@
                 android:layout_row="0"
                 android:layout_column="0"
                 android:backgroundTint="#FFFFFF"
-                app:srcCompat="@drawable/kfb" />
+                app:srcCompat="@drawable/kfb3" />
 
 
             <ImageButton
@@ -44,7 +44,7 @@
                 android:layout_row="0"
                 android:layout_column="1"
                 android:backgroundTint="#FFFFFF"
-                app:srcCompat="@drawable/cfb" />
+                app:srcCompat="@drawable/cfb3" />
 
             <ImageButton
                 android:id="@+id/japanFood"
@@ -53,7 +53,7 @@
                 android:layout_row="0"
                 android:layout_column="2"
                 android:backgroundTint="#FFFFFF"
-                app:srcCompat="@drawable/jfb" />
+                app:srcCompat="@drawable/jfb3" />
 
 
             <ImageButton
@@ -64,7 +64,7 @@
                 android:layout_column="3"
                 android:backgroundTint="#FFFFFF"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                app:srcCompat="@drawable/afb" />
+                app:srcCompat="@drawable/afb3" />
 
             <ImageButton
                 android:id="@+id/mexicanFood"
@@ -73,7 +73,7 @@
                 android:layout_row="1"
                 android:layout_column="0"
                 android:backgroundTint="#00FBF7F7"
-                app:srcCompat="@drawable/mfb" />
+                app:srcCompat="@drawable/mfb3" />
 
 
             <ImageButton
@@ -83,7 +83,7 @@
                 android:layout_row="1"
                 android:layout_column="1"
                 android:backgroundTint="#00FBF7F7"
-                app:srcCompat="@drawable/ufb" />
+                app:srcCompat="@drawable/ufb3" />
 
             <ImageButton
                 android:id="@+id/fusionFood"
@@ -92,7 +92,7 @@
                 android:layout_row="1"
                 android:layout_column="2"
                 android:backgroundTint="#00FBF7F7"
-                app:srcCompat="@drawable/ffb" />
+                app:srcCompat="@drawable/ffb3" />
 
             <ImageButton
                 android:id="@+id/globalFood"
@@ -101,7 +101,7 @@
                 android:layout_row="1"
                 android:layout_column="3"
                 android:backgroundTint="#00FBF7F7"
-                app:srcCompat="@drawable/gfb" />
+                app:srcCompat="@drawable/gfb3" />
 
 
         </GridLayout>
@@ -186,9 +186,9 @@
             android:id="@+id/imageView5"
             android:layout_width="77dp"
             android:layout_height="31dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="59dp"
             app:layout_constraintEnd_toStartOf="@+id/favorites"
-            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintHorizontal_bias="0.054"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/newlogo2" />
@@ -208,21 +208,22 @@
             android:id="@+id/cameraSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="43dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="45dp"
             android:layout_marginBottom="132dp"
             android:backgroundTint="#FED312"
             app:layout_constraintBottom_toBottomOf="@+id/backgroundTop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@android:drawable/ic_menu_camera" />
 
         <ImageButton
             android:id="@+id/favorites"
             android:layout_width="23dp"
             android:layout_height="25dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="140dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="134dp"
             android:background="#FFFFFF"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitXY"
